@@ -41,14 +41,47 @@ public class FillInQuestion extends Question
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * This method overrides the setText method in the Question class.
+     * 
+     *  Sets the question text and answer
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param  questionText the text of the question, including the answer
      */
-    public int sampleMethod(int y)
+    
+    /*
+     * Use the @Override annotation when overriding a method to help the compiler
+     *  verify that you are in fact overriding and not overloading by mistake
+     */
+    @Override
+    public void setText(String questionText)
     {
-        // put your code here
-        return x + y;
+        Scanner parser = new Scanner(questionText);
+        parser.useDelimiter("_");
+        String question = parser.next();                // "The inventor of Java is "
+        String answer = parser.next();                  // "James Gosling"
+        question += "________" + parser.next();         // "________."
+        
+        /*
+         * The inherited instance variables are private; they cannot be accessed directly.
+         *      We must use the mutator and accessor methods.
+         */
+        //this.text = question;
+        //this.answer = answer;
+        
+        /*
+         * Use the "super" reserved word to call the setText method as defined in
+         *      the superclass (e.g., Question).
+         */
+        super.setText(question);
+        
+        /*
+         * We should use the "this" reserved word to call the setAnswer method. If the
+         *      subclass doesn't override the setAnswer method, the superclass's method
+         *      will be called.
+         *      
+         *  We don't want to use the "super" reserved word in this case, because if we
+         *      later override setAnswer, the overriden method would not be called.
+         */
+        this.setAnswer(answer);
     }
 }
