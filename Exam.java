@@ -24,7 +24,7 @@ public class Exam
         this.questions.add(q);
     }
 
-    public void askQuestion()
+    public void askQuestions()
     {
         Scanner in = new Scanner(System.in);
 
