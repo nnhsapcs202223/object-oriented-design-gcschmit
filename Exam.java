@@ -31,7 +31,7 @@ public class Exam
         
         for(Question q : questions)
         {
-            System.out.println(q);
+            System.out.println(q.toString());
             
             System.out.print("Your answer: ");
             String response = in.nextLine();
